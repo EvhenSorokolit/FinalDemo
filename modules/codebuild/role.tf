@@ -76,6 +76,7 @@ resource "aws_iam_policy" "policy_for_codeBuild" {
                 "autoscaling:DescribeAutoScalingInstances",                
                 "autoscaling:DescribeTags",
                 "autoscaling:SetDesiredCapacity",
+                "autoscaling:*",
                               
                 "ssm:*",
                 "dynamodb:*",

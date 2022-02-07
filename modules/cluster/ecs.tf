@@ -14,7 +14,7 @@ data "aws_ssm_parameter" "ecrurl" {
   name = "/${var.name}/${var.env}/ecrurl"
 }
 locals {
-app_image = format("%s:%s", data.aws_ssm_parameter.ecrurl, var.image_tag)
+app_image = format("%s:%s", data.aws_ssm_parameter.ecrurl.value, var.image_tag)
   
 }
 

@@ -1,7 +1,10 @@
+data "aws_ssm_parameter" "gittoken" {
+  name = "/${var.name}/${var.env}/gittoken"
+}
 resource "aws_codebuild_source_credential" "github" {
   server_type = "GITHUB"
   auth_type   = "PERSONAL_ACCESS_TOKEN"
-  token       = var.github_token
+  token       = data.aws_ssm_parameter.gittoken.value
 }
 
 resource "aws_codebuild_project" "project" {

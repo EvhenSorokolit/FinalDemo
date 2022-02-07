@@ -21,10 +21,20 @@ resource "aws_ssm_parameter" "api_key" {
   value       = var.api_key
   overwrite =true
 }
+
+resource "aws_ssm_parameter" "github_token" {
+  name        = "/${var.name}/${var.env}/gittoken"
+  description = "The parameter description"
+  type        = "SecureString"
+  value       = var.github_token
+  overwrite =true
+}
+
 resource "aws_ssm_parameter" "ecr_url" {
   name        = "/${var.name}/${var.env}/ecrurl"
   description = "The parameter description"
   value       = aws_ecr_repository.ecr_repository.repository_url
+  type        = "String"
   overwrite =true
   depends_on = [aws_ecr_repository.ecr_repository]
 }

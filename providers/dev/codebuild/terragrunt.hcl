@@ -43,6 +43,7 @@ dependency "cluster" {
   }
 }
 
+
 inputs =  {
     ecr_url = dependency.init-build.outputs.ecr_repository_url
     vpc_id = dependency.cluster.outputs.vpc_id

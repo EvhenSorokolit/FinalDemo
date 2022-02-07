@@ -32,3 +32,4 @@ variable "name" {
 locals {
   repository_name = format("%s-%s", var.name, var.env)
 }
+variable "github_token" {}
