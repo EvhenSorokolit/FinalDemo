@@ -46,6 +46,7 @@ inputs = {
   github_token = "Private Github token"
   token = "Telegram bot token"
   api_key = "TMDB API key"
+  db_pass = "DB password"
 }
 ```
 One command deployment
