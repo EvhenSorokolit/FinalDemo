@@ -31,7 +31,7 @@ phases:
       - echo Build started on `date`
 
       - cd ${CODEBUILD_SRC_DIR} 
-      - terragrunt plan --terragrunt-working-dir providers/dev/cluster/ -var="app_image"="$ECR_URL:${TAG}" -no-color -input=false -out plan.out
+      - terragrunt plan --terragrunt-working-dir providers/dev/cluster/ -var="image_tag"="$ECR_URL:${TAG}" -no-color -input=false -out plan.out
       - terragrunt apply --terragrunt-working-dir providers/dev/cluster/ -auto-approve -no-color -input=false plan.out
       #- terragrunt apply --terragrunt-working-dir providers/dev/cluster/  -var="image_tag=${TAG}" -auto-approve 
 

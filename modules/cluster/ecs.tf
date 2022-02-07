@@ -10,7 +10,13 @@ data "aws_ssm_parameter" "token" {
 data "aws_ssm_parameter" "api_key" {
   name = "/${var.name}/${var.env}/tmdbtoken"
 }
-
+data "aws_ssm_parameter" "ecrurl" {
+  name = "/${var.name}/${var.env}/ecrurl"
+}
+locals {
+app_image = format("%s:%s", data.aws_ssm_parameter.ecrurl, var.image_tag)
+  
+}
 
 resource "aws_ecs_service" "test"{
     name = "${var.name}-${var.env}"
@@ -48,7 +54,7 @@ resource "aws_ecs_task_definition" "main" {
 
       container_definitions = jsonencode([{
    name        = "first"
-   image       = var.app_image
+   image       = local.app_image
    essential   = true
    cpu         = "${tonumber(var.task_cpu)}"
    memory      = "${tonumber(var.task_memory)}"

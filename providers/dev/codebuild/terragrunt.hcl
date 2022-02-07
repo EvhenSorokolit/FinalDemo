@@ -1,22 +1,22 @@
 terraform {
   source = "../../../modules//codebuild"
   #autorun code build after apply
-# after_hook "run_sums" {
-#     commands = [
-#       "apply"
-#     ]
+after_hook "run_sums" {
+    commands = [
+      "apply"
+    ]
 
-#     execute = [
-#       "aws",
-#       "codebuild",
-#       "start-build",
-#       "--project-name",
-#       "${dependency.init-build.outputs.app_name}"
+    execute = [
+      "aws",
+      "codebuild",
+      "start-build",
+      "--project-name",
+      "${dependency.init-build.outputs.app_name}"
      
-#     ]
+    ]
 
-#     run_on_error = false
-#   }
+    run_on_error = false
+  }
 
  }
 
