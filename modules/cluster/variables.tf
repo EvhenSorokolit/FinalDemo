@@ -13,10 +13,10 @@ variable "aws_region" {
     default = "eu-central-1"
     
 }
-variable "app_image" {
-    default = "000000000000.dkr.ecr.eu-west-1.amazonaws.com/image"
+# variable "app_image" {
+#     default = "000000000000.dkr.ecr.eu-west-1.amazonaws.com/image"
   
-}
+# }
 
 #ECS
 
