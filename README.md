@@ -43,7 +43,9 @@ Main configuration files are the next:
 
 ```
 inputs = {
-  toketn = "TOKEN"
+  github_token = "Private Github token"
+  token = "Telegram bot token"
+  api_key = "TMDB API key"
 }
 ```
 One command deployment
