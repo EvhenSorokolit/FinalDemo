@@ -1,3 +1,9 @@
+resource "aws_codebuild_source_credential" "github" {
+  server_type = "GITHUB"
+  auth_type   = "PERSONAL_ACCESS_TOKEN"
+  token       = var.github_token
+}
+
 resource "aws_codebuild_project" "project" {
  # depends_on = [null_resource.import_source_credentials]
   name = "${var.name}-${var.env}-project"
@@ -61,6 +67,7 @@ resource "aws_codebuild_project" "project" {
     security_group_ids = [aws_security_group.codebuild_sg.id]
   }
 }
+
 
 resource "aws_codebuild_webhook" "example" {
   project_name = aws_codebuild_project.project.name

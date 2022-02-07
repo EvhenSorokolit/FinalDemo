@@ -6,9 +6,9 @@ include {
   path = find_in_parent_folders()
 }
 
-# locals {
-#   secrets = read_terragrunt_config(find_in_parent_folders("secrets.hcl"))
-# }
+ locals {
+   secrets = read_terragrunt_config(find_in_parent_folders("secrets.hcl"))
+}
 
 dependency "ecr" {
   config_path = "../ecr"
@@ -27,9 +27,10 @@ dependency "cluster" {
   }
 }
 
-inputs =  {
+inputs = merge(
+  local.secrets.inputs,{
     ecr_url = dependency.ecr.outputs.ecr_repository_url
     vpc_id = dependency.cluster.outputs.vpc_id
     subnet_id = dependency.cluster.outputs.private_ids
     build_spec_file = "providers/dev/buildspec.yml"
-  }
+  })
