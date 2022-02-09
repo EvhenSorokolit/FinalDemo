@@ -45,7 +45,7 @@ resource "aws_codebuild_project" "project" {
     git_clone_depth = 1
     report_build_status = "true"
   }
-
+  source_version = var.env
   # Removed due using cache from ECR
   # cache {
   #   type = "LOCAL"
