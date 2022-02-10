@@ -39,4 +39,13 @@ resource "aws_ssm_parameter" "ecr_url" {
   depends_on = [aws_ecr_repository.ecr_repository]
 }
 
+resource "aws_ssm_parameter" "admin_id" {
+  name        = "/${var.name}/${var.env}/adminid"
+  description = "The parameter description"
+  value       = var.admin_id
+  type        = "String"
+  overwrite =true
+  
+}
+
 

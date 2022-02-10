@@ -5,7 +5,7 @@ variable "name" {
 }
 variable "env"{
     description = " Enter env"
-    default = "prod"
+   
 }
 
 variable "aws_region" {
@@ -23,9 +23,6 @@ variable "aws_region" {
 #variable "ecr_repository_url"{} 
 variable "image_tag"{}
 
-# locals{
-#     image = format("%s:%s", var.ecr_repository_url, var.image_tag)
-# }
 
 
 variable "port" {

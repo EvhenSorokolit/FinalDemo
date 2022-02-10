@@ -13,6 +13,11 @@ data "aws_ssm_parameter" "api_key" {
 data "aws_ssm_parameter" "ecrurl" {
   name = "/${var.name}/${var.env}/ecrurl"
 }
+data "aws_ssm_parameter" "admin_id" {
+  name = "/${var.name}/${var.env}/adminid"
+}
+
+
 locals {
 app_image = format("%s:%s", data.aws_ssm_parameter.ecrurl.value, var.image_tag)
   
@@ -63,6 +68,10 @@ resource "aws_ecs_task_definition" "main" {
      {
        name ="PGHOST"
        value = "${aws_db_instance.default.address}"
+     },
+     {
+       name ="ADMIN_ID"
+       value = "${data.aws_ssm_parameter.admin_id.value}"
      },
 
      {

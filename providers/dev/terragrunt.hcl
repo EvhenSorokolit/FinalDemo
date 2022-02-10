@@ -10,7 +10,8 @@ locals {
   branch_pattern = "^refs/heads/dev$"
   git_trigger_event = "PUSH"
   app_count = 1
-  
+  claster_size = 1
+  subnet_count = 2
   
   }
         
@@ -28,6 +29,8 @@ inputs =  {
   branch_pattern = local.branch_pattern
   git_trigger_event = local.git_trigger_event
   app_count = local.app_count
+  inst_number = local.claster_size
+  Sub_count = local.subnet_count
 }
 
 remote_state {
