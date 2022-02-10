@@ -46,22 +46,7 @@ resource "aws_codebuild_project" "project" {
     report_build_status = "true"
   }
   source_version = var.env
-  # Removed due using cache from ECR
-  # cache {
-  #   type = "LOCAL"
-  #   modes = ["LOCAL_DOCKER_LAYER_CACHE"]
-  # }
-
-  # https://docs.aws.amazon.com/codebuild/latest/userguide/vpc-support.html#enabling-vpc-access-in-projects
-  # Access resources within our VPC
-  // dynamic "vpc_config" {
-  //   for_each = var.vpc_id == null ? [] : [var.vpc_id]
-  //   content {
-  //     vpc_id = var.vpc_id
-  //     subnets = var.subnets
-  //     security_group_ids = var.security_groups
-  //   }
-  // }
+  
   vpc_config {
     vpc_id = var.vpc_id
 
